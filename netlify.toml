@@ -16,3 +16,10 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Content-Security-Policy = "default-src 'self'; img-src 'self' data: https:; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline';" 
+
+[functions]
+  included_files = ["node_modules/@netlify/plugin-nextjs/**/*"]
+
+[dev]
+  command = "npm run dev"
+  targetPort = 3000
