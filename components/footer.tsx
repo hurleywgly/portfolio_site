@@ -21,7 +21,7 @@ export function Footer() {
             <ArrowUpRight className="h-4 w-4" />
           </Link>
           <Link
-            href="https://github.com/username/portfolio"
+            href="https://github.com/hurleywgly/portfolio_site"
             className="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors"
           >
             view source

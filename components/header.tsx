@@ -10,14 +10,14 @@ export function Header() {
           <Image 
             src="/ryan-profile.jpg" 
             alt="Ryan Wigley" 
-            width={48} 
-            height={48} 
+            width={62} 
+            height={62} 
             className="rounded-full"
             priority
           />
           <div>
             <h1 className="text-xl font-bold">Ryan Wigley</h1>
-            <p className="text-sm text-muted-foreground">Technical Product Leader</p>
+            <p className="text-md text-muted-foreground">Technical Product Leader</p>
           </div>
         </div>
         <div className="flex items-center gap-4">
