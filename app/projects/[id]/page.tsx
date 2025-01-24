@@ -4,8 +4,9 @@ import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { notFound } from "next/navigation"
-import { SECTION_HEADERS, Project } from "@/lib/constants"
-import { projects } from "@/lib/data" // Move projects array to separate file
+import { SECTION_HEADERS } from "@/lib/constants"
+import type { Project } from "@/lib/types"
+import { projects } from "@/lib/data"
 
 function formatText(text: string | undefined) {
   if (!text) return null;

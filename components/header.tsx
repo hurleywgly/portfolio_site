@@ -1,8 +1,9 @@
 import { Mail, Twitter, Linkedin } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { FC } from 'react'
 
-export function Header() {
+export const Header: FC = () => {
   return (
     <header className="w-full max-w-3xl mx-auto py-8 px-4">
       <div className="flex items-center justify-between">

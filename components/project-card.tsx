@@ -2,7 +2,8 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import type { Project } from "@/types"
+import { FC } from 'react'
+import type { Project } from "@/lib/types"
 
 interface ProjectCardProps {
   project: Project

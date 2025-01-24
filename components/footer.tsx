@@ -1,7 +1,8 @@
 import { ArrowUpRight } from "lucide-react"
 import Link from "next/link"
+import { FC } from 'react'
 
-export function Footer() {
+export const Footer: FC = () => {
   return (
     <footer className="border-t">
       <div className="max-w-3xl mx-auto px-4 py-6">

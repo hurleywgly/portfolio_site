@@ -5,7 +5,7 @@ import { Briefcase, PenTool, Settings, Wrench } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { tools, essays, workExperience, projects } from "@/lib/data"
-import { Project, WorkExperience, Tool, Essay } from "@/lib/types"
+import type { Project, WorkExperience, Tool, Essay } from "@/lib/types"
 
 export default function Home() {
   return (
@@ -53,8 +53,10 @@ export default function Home() {
             <h2 className="text-xl font-semibold">Project portfolio</h2>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
-            {projects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
+            {projects.map((project: Project) => (
+              project && project.id ? (
+                <ProjectCard key={project.id} project={project} />
+              ) : null
             ))}
           </div>
         </section>

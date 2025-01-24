@@ -5,14 +5,19 @@ export interface Project {
   coverImage: string
   prototypeUrl: string
   problemStatement: string
-  myRole?: string
+  myRole: string
   processOverview?: string
+  technicalInnovation?: string
+  strategicExecution?: string
+  stakeholderManagement?: string
+  impactAndLegacy?: string
+  keyLearnings?: string
   technologyHighlights?: string
   impact?: string
-  impactMetrics?: string
+  customerAndStakeholderFeedback?: string
   lessonsLearned?: string
-  stakeholderManagement?: string
-  keyLearnings?: string
+  implementationAndImpact?: string
+  lookingForward?: string
 }
 
 export interface WorkExperience {
