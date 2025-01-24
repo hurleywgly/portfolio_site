@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "Ryan Wigley - Technical Product Leader",
+  title: "Ryan Wigley",
   description: "Personal website and portfolio of Ryan Wigley, Technical Product Leader based in Seattle.",
 }
 
