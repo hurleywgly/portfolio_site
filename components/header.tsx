@@ -2,8 +2,12 @@ import { Mail, Twitter, Linkedin } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { FC } from 'react'
+import { ThemeAwareImage } from "@/components/ui/theme-aware-image"
+import { workExperience } from "@/lib/data"
 
 export const Header: FC = () => {
+  const experience = workExperience[0] // Current role (Amazon)
+  
   return (
     <header className="w-full max-w-3xl mx-auto py-8 px-4">
       <div className="flex items-center justify-between">

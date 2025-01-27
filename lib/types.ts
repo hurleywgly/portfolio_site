@@ -24,13 +24,19 @@ export interface WorkExperience {
   company: string
   role: string
   period: string
-  logo: string
+  logo: {
+    light: string
+    dark: string
+  }
 }
 
 export interface Tool {
   name: string
   description: string
-  icon: string
+  icon: {
+    light: string
+    dark: string
+  }
 }
 
 export interface Essay {

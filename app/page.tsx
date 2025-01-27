@@ -6,6 +6,8 @@ import Link from "next/link"
 import Image from "next/image"
 import { tools, essays, workExperience, projects } from "@/lib/data"
 import type { Project, WorkExperience, Tool, Essay } from "@/lib/types"
+import { ToolCard } from "@/components/tool-card"
+import { WorkItem } from "@/components/work-item"
 
 export default function Home() {
   return (
@@ -29,20 +31,7 @@ export default function Home() {
           </p>
           <div className="space-y-4">
             {workExperience.map((work) => (
-              <div key={work.company} className="flex items-start gap-4">
-                <div className="relative w-8 h-8 mt-1">
-                  <Image
-                    src={work.logo}
-                    alt={`${work.company} logo`}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-                <div>
-                  <h3 className="font-medium">{work.company}</h3>
-                  <p className="text-sm text-muted-foreground">{work.role} • {work.period}</p>
-                </div>
-              </div>
+              <WorkItem key={work.company} experience={work} />
             ))}
           </div>
         </section>
@@ -88,20 +77,7 @@ export default function Home() {
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             {tools.map((tool) => (
-              <div key={tool.name} className="flex items-start gap-3 p-4 rounded-lg border bg-card">
-                <div className="relative w-5 h-5 mt-0.5">
-                  <Image
-                    src={tool.icon}
-                    alt={`${tool.name} icon`}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-                <div>
-                  <h3 className="font-medium">{tool.name}</h3>
-                  <p className="text-sm text-muted-foreground">{tool.description}</p>
-                </div>
-              </div>
+              <ToolCard key={tool.name} tool={tool} />
             ))}
           </div>
           <div className="mt-16 p-4 bg-muted/50 rounded-lg">

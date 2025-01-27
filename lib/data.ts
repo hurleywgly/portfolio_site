@@ -61,38 +61,59 @@ export const tools: Tool[] = [
     { 
         name: "Notion", 
         description: "Flexible database for my family, projects, and new ideas.",
-        icon: "/tools/notion-icon1.svg"
-      },
-      { 
+        icon: {
+          light: "/tools/notion-icon.svg",
+          dark: "/tools/notion-icon2.svg"
+        }
+    },
+    { 
         name: "ChatGPT", 
         description: "Thought partner, information organizer, and planning assistant.",
-        icon: "/tools/chatgpt-icon.svg"
-      },
-      { 
+        icon: {
+          light: "/tools/chatgpt-icon.svg",
+          dark: "/tools/chatgpt-icon2.svg"
+        }
+    },
+    { 
         name: "Claude", 
         description: "My favorite project assistant, rapid prototyper, and everything-else copilot.",
-        icon: "/tools/claude-icon.svg"
-      },
-      { 
+        icon: {
+          light: "/tools/claude-icon.svg",
+          dark: "/tools/claude-icon2.svg"
+        }
+    },
+    { 
         name: "Perplexity", 
         description: "My go-to model for research and web browsing with context.",
-        icon: "/tools/perplexity-ai-icon.svg"
-      },
-      { 
+        icon: {
+            light: "/tools/perplexity-ai-icon.svg",
+            dark: "/tools/perplexity-ai-icon2.svg"
+          }
+    },
+    { 
         name: "Cursor", 
         description: "AI-powered code editor and composer.",
-        icon: "/tools/code-tags.svg"
-      },
-      { 
+        icon: {
+            light: "/tools/code-tags.svg",
+            dark: "/tools/code-tags2.svg"
+          }
+    },
+    { 
         name: "v0", 
         description: "Quickest way to build and deploy prototypes with designs or specs.",
-        icon: "/tools/v0-icon.svg"
-      },
-      { 
+        icon: {
+            light: "/tools/v0-icon.svg",
+            dark: "/tools/v0-icon2.svg"
+          }
+    },
+    { 
         name: "Replit", 
         description: "Create fast apps, agents, and tools with your data or through integration.",
-        icon: "/tools/replit-icon.svg"
-      },
+        icon: {
+            light: "/tools/replit-icon.svg",
+            dark: "/tools/replit-icon2.svg"
+          }
+    },
 ]
 
 export const essays: Essay[] = [
@@ -131,24 +152,36 @@ export const workExperience: WorkExperience[] = [
         company: "Amazon",
         role: "Sr Technical PM",
         period: "2021 - today",
-        logo: "/companies/amazon-icon.svg"
-      },
-      {
+        logo: {
+          light: "/companies/amazon-icon.svg",
+          dark: "/companies/amazon-icon2.svg"
+        }
+    },
+    {
         company: "Productonics",
         role: "Founder",
         period: "2020 - today",
-        logo: "/companies/volcano-icon.svg"
-      },
-      {
+        logo: {
+          light: "/companies/volcano-icon.svg",
+          dark: "/companies/volcano-icon2.svg"
+        }
+    },
+    {
         company: "Dubset Media",
         role: "Founding PM",
         period: "2012 - 2020",
-        logo: "/companies/dubset-icon.svg"
-      },
-      {
+        logo: {
+            light: "/companies/dubset-icon.svg",
+            dark: "/companies/dubset-icon2.svg"
+          }
+    },
+    {
         company: "Bouncebug",
         role: "Co-Founder",
         period: "2011 - 2012",
-        logo: "/companies/bouncebug-icon.svg"
-      }
+        logo: {
+            light: "/companies/bouncebug-icon.svg",
+            dark: "/companies/bouncebug-icon2.svg"
+          }
+    }
 ] 
