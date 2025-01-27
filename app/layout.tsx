@@ -1,6 +1,7 @@
 import { GeistSans } from "geist/font/sans"
 import type { Metadata } from "next"
 import "./globals.css"
+import { ThemeProvider } from "@/components/theme-provider"
 
 export const metadata: Metadata = {
   title: "Ryan Wigley",
@@ -13,8 +14,18 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={GeistSans.className}>
-      <body className="min-h-screen bg-background text-foreground">{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${GeistSans.className} min-h-screen bg-background text-foreground`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+          forcedTheme="system"
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   )
 }

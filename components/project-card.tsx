@@ -12,7 +12,7 @@ interface ProjectCardProps {
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <Link href={`/projects/${project.id}`} className="group relative w-full">
-      <div className="overflow-hidden rounded-lg border bg-card w-full">
+      <div className="overflow-hidden rounded-lg border bg-card hover:bg-accent/50 transition-colors w-full">
         <div className="relative aspect-[1200/630]">
           <Image
             src={project.coverImage || "/placeholder.svg"}
