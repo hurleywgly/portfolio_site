@@ -119,27 +119,34 @@ export const tools: Tool[] = [
 export const essays: Essay[] = [
     {
         id: "1",
+        date: "1/26/25",
+        title: "Thought Partner, Assistant, & Agent",
+        preview: "A PM’s practical guide to using AI: mental models, prompts, and tools.",
+        url: "https://blog.ryanwigley.com/thought-partner-assistant-and-agent",
+      },
+      {
+        id: "2",
         date: "12/12/24",
         title: "100 days of AI",
         preview: "I've been finding myself thinking a lot about young Ryan lately.",
         url: "https://blog.ryanwigley.com/100-days-of-ai",
       },
       {
-        id: "2",
+        id: "3",
         date: "12/5/24",
         title: "Free-range AI agents",
         preview: "I can't stop thinking about AI agents. We're witnessing the dawn of truly autonomous digital beings",
         url: "https://blog.ryanwigley.com/free-range-ai-agents",
       },
       {
-        id: "3",
+        id: "4",
         date: "10/31/24",
         title: "The growing AI innovation gap",
         preview: "This gap isn't just about access to tools, it's about the pace of innovation.",
         url: "https://blog.ryanwigley.com/the-growing-ai-innovation-gap",
       },
       {
-        id: "4",
+        id: "5",
         date: "10/22/24",
         title: "How to avoid overthinking your API",
         preview: "If you are in the business of software integrations, your API is your brand's digital handshake with the world.",
