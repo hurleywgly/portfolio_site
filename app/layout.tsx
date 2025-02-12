@@ -15,6 +15,23 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Google Analytics */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-747E1F6JP2"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-747E1F6JP2');
+            `,
+          }}
+        />
+      </head>
       <body className={`${GeistSans.className} min-h-screen bg-background text-foreground`}>
         <ThemeProvider
           attribute="class"
