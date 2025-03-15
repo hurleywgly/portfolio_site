@@ -6,7 +6,7 @@ import { ThemeAwareImage } from "@/components/ui/theme-aware-image"
 import { workExperience } from "@/lib/data"
 
 export const Header: FC = () => {
-  const experience = workExperience[0] // Current role (Amazon)
+  const experience = workExperience[0] // Current role (Raya)
   
   return (
     <header className="w-full max-w-3xl mx-auto py-8 px-4">

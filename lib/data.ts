@@ -119,9 +119,16 @@ export const tools: Tool[] = [
 export const essays: Essay[] = [
     {
         id: "1",
+        date: "2/26/25",
+        title: "Everyday AI Copilots",
+        preview: "A walkthrough of how I use AI assistants to get more sh*t done.",
+        url: "https://blog.ryanwigley.com/everyday-ai-copilots",
+      },
+      {
+        id: "2",
         date: "1/26/25",
         title: "Thought Partner, Assistant, & Agent",
-        preview: "A PM’s practical guide to using AI: mental models, prompts, and tools.",
+        preview: "A PM's practical guide to using AI: mental models, prompts, and tools.",
         url: "https://blog.ryanwigley.com/thought-partner-assistant-and-agent",
       },
       {
@@ -156,9 +163,18 @@ export const essays: Essay[] = [
 
 export const workExperience: WorkExperience[] = [
     {
+        company: "Raya",
+        role: "Senior PM",
+        period: "2025 - today",
+        logo: {
+          light: "/companies/raya-icon.svg",
+          dark: "/companies/raya-icon2.svg"
+        }
+    },
+    {
         company: "Amazon",
         role: "Sr Technical PM",
-        period: "2021 - today",
+        period: "2021 - 2025",
         logo: {
           light: "/companies/amazon-icon.svg",
           dark: "/companies/amazon-icon2.svg"

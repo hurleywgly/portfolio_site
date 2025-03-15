@@ -55,7 +55,16 @@ const config: Config = {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
-  		}
+  		},
+  		keyframes: {
+  			"fade-in": {
+  				"0%": { opacity: "0" },
+  				"100%": { opacity: "0.5" },
+  			},
+  		},
+  		animation: {
+  			"fade-in": "fade-in 1s ease-in-out forwards",
+  		},
   	}
   },
   plugins: [require("tailwindcss-animate")],

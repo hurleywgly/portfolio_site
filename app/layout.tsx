@@ -2,6 +2,7 @@ import { GeistSans } from "geist/font/sans"
 import type { Metadata } from "next"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import { ParticlesBackground } from "@/components/particles-background"
 
 export const metadata: Metadata = {
   title: "Ryan Wigley",
@@ -40,6 +41,7 @@ export default function RootLayout({
           disableTransitionOnChange
           forcedTheme="system"
         >
+          <ParticlesBackground />
           {children}
         </ThemeProvider>
       </body>

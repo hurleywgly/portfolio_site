@@ -27,7 +27,7 @@ export default function Home() {
             <h2 className="text-xl font-semibold">Work</h2>
           </div>
           <p className="text-muted-foreground mb-4">
-            I specialize in building new products, APIs, transforming complex architecture & operations, and wearing many hats.
+            I excel at building new software products, storytelling, obsessing over customers, and wearing many hats.
           </p>
           <div className="space-y-4">
             {workExperience.map((work) => (
