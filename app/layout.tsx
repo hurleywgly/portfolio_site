@@ -39,7 +39,6 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
-          forcedTheme="system"
         >
           <ParticlesBackground />
           {children}
