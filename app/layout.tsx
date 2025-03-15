@@ -32,29 +32,6 @@ export default function RootLayout({
             `,
           }}
         />
-        {/* Force initial theme to prevent flicker */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  // Check for stored theme
-                  const storedTheme = localStorage.getItem('theme');
-                  // Check for system preference
-                  const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-                  // Apply theme
-                  if (storedTheme === 'dark' || (!storedTheme && systemPrefersDark)) {
-                    document.documentElement.classList.add('dark');
-                  } else {
-                    document.documentElement.classList.remove('dark');
-                  }
-                } catch (e) {
-                  console.error('Theme initialization error:', e);
-                }
-              })();
-            `,
-          }}
-        />
       </head>
       <body className={`${GeistSans.className} min-h-screen bg-background text-foreground`}>
         <ThemeProvider
@@ -62,7 +39,7 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
-          storageKey="theme"
+          forcedTheme="system"
         >
           <ParticlesBackground />
           {children}

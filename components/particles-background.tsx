@@ -1,163 +1,111 @@
 "use client"
 
+import { Particles } from "@/components/ui/particles"
 import { useTheme } from "next-themes"
-import { useEffect, useRef, useState } from "react"
+import { useCallback, useEffect, useState, memo, useMemo } from "react"
+import { useWindowSize } from "@/lib/hooks/use-window-size"
 
-export function ParticlesBackground() {
-  const { resolvedTheme, theme } = useTheme()
-  const [isMounted, setIsMounted] = useState(false)
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-  const particlesRef = useRef<Particle[]>([])
-  const animationRef = useRef<number | null>(null)
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
+// Determine if we're in a high-performance environment
+const useIsHighPerformance = () => {
+  const [isHighPerformance, setIsHighPerformance] = useState<boolean | null>(null)
   
-  // Particle type definition
-  type Particle = {
-    x: number;
-    y: number;
-    size: number;
-    speedX: number;
-    speedY: number;
-    opacity: number;
-  }
-  
-  // Set mounted state
   useEffect(() => {
-    setIsMounted(true)
-    setDimensions({
-      width: window.innerWidth,
-      height: window.innerHeight
-    })
-    
-    return () => {
-      if (animationRef.current) {
-        window.cancelAnimationFrame(animationRef.current)
-        animationRef.current = null
+    // Check for low-end devices or browsers
+    const checkPerformance = () => {
+      // Check if device has limited memory or CPU
+      const memory = (navigator as any).deviceMemory
+      const concurrency = navigator.hardwareConcurrency
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+      
+      // Check for reduced motion preference
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      
+      if (
+        (memory && memory < 4) || // Less than 4GB RAM
+        (concurrency && concurrency < 4) || // Less than 4 cores
+        isMobile || // Mobile device
+        prefersReducedMotion // User prefers reduced motion
+      ) {
+        setIsHighPerformance(false)
+      } else {
+        setIsHighPerformance(true)
       }
+    }
+    
+    try {
+      // Only run in browser
+      if (typeof window !== 'undefined') {
+        checkPerformance()
+      }
+    } catch (e) {
+      // If we can't detect, assume high performance
+      console.warn("Could not detect device performance:", e)
+      setIsHighPerformance(true)
     }
   }, [])
   
-  // Handle resize
-  useEffect(() => {
-    if (!isMounted) return
-    
-    const handleResize = () => {
-      setDimensions({
-        width: window.innerWidth,
-        height: window.innerHeight
-      })
-    }
-    
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [isMounted])
+  return isHighPerformance === null ? true : isHighPerformance
+}
+
+function ParticlesBackgroundComponent() {
+  const { theme, resolvedTheme } = useTheme()
+  const [currentTheme, setCurrentTheme] = useState(theme)
+  const { width } = useWindowSize()
+  const isHighPerformance = useIsHighPerformance()
+  const [isVisible, setIsVisible] = useState(false)
   
-  // Main animation effect
+  // Lazy initialization - only show particles after a delay
   useEffect(() => {
-    if (!isMounted || dimensions.width === 0 || dimensions.height === 0) return
+    const timeoutId = setTimeout(() => {
+      setIsVisible(true)
+    }, 300) // Delay rendering to prioritize main content
     
-    const canvas = canvasRef.current
-    if (!canvas) return
-    
-    // Set canvas dimensions
-    canvas.width = dimensions.width
-    canvas.height = dimensions.height
-    
-    const context = canvas.getContext('2d')
-    if (!context) return
-    
-    // Clear any existing animation
-    if (animationRef.current) {
-      window.cancelAnimationFrame(animationRef.current)
-      animationRef.current = null
-    }
-    
-    // Initialize particles
-    const initParticles = () => {
-      const particles: Particle[] = []
-      for (let i = 0; i < 200; i++) {
-        particles.push({
-          x: Math.random() * dimensions.width,
-          y: Math.random() * dimensions.height,
-          size: Math.random() * 2 + 0.5,
-          speedX: (Math.random() - 0.5) * 0.5,
-          speedY: (Math.random() - 0.5) * 0.5,
-          opacity: Math.random() * 0.5 + 0.1
-        })
-      }
-      return particles
-    }
-    
-    // Create particles
-    particlesRef.current = initParticles()
-    
-    // Determine particle color based on theme
-    const getParticleColor = (opacity: number) => {
-      // Use multiple theme checks for redundancy
-      const isDarkMode = 
-        resolvedTheme === 'dark' || 
-        theme === 'dark' || 
-        (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
-      
-      return isDarkMode 
-        ? `rgba(255, 255, 255, ${opacity})` 
-        : `rgba(0, 0, 0, ${opacity})`
-    }
-    
-    // Animation loop
-    const animate = () => {
-      context.clearRect(0, 0, canvas.width, canvas.height)
-      
-      particlesRef.current.forEach((particle) => {
-        context.beginPath()
-        context.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
-        context.fillStyle = getParticleColor(particle.opacity)
-        context.fill()
-        
-        // Update position
-        particle.x += particle.speedX
-        particle.y += particle.speedY
-        
-        // Wrap around edges
-        if (particle.x < 0) particle.x = canvas.width
-        if (particle.x > canvas.width) particle.x = 0
-        if (particle.y < 0) particle.y = canvas.height
-        if (particle.y > canvas.height) particle.y = 0
-      })
-      
-      animationRef.current = window.requestAnimationFrame(animate)
-    }
-    
-    // Start animation
-    animate()
-    
-    // Cleanup
-    return () => {
-      if (animationRef.current) {
-        window.cancelAnimationFrame(animationRef.current)
-        animationRef.current = null
-      }
-    }
-  }, [isMounted, dimensions, resolvedTheme, theme])
+    return () => clearTimeout(timeoutId)
+  }, [])
   
-  // Don't render anything on server
-  if (!isMounted) {
-    return null
-  }
+  // Debounce theme changes to prevent flickering
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setCurrentTheme(resolvedTheme || theme)
+    }, 100)
+    
+    return () => clearTimeout(timeoutId)
+  }, [theme, resolvedTheme])
+  
+  // Calculate responsive quantity based on screen width and device performance
+  const getQuantity = useCallback(() => {
+    if (!width) return 200
+    
+    // Reduce particles for low-performance devices
+    const performanceMultiplier = isHighPerformance ? 1 : 0.5
+    
+    // Scale particles based on screen width - doubled from previous values
+    if (width < 640) return Math.floor(100 * performanceMultiplier) // Mobile
+    if (width < 1024) return Math.floor(200 * performanceMultiplier) // Tablet
+    if (width < 1536) return Math.floor(300 * performanceMultiplier) // Laptop
+    return Math.floor(400 * performanceMultiplier) // Desktop
+  }, [width, isHighPerformance])
+  
+  // Memoize particle props to prevent unnecessary recalculations
+  const particleProps = useMemo(() => ({
+    quantity: getQuantity(),
+    staticity: isHighPerformance ? 30 : 50, // Less movement on low-end devices
+    color: currentTheme === "dark" ? "#ffffff" : "#000000",
+    ease: isHighPerformance ? 50 : 80, // Smoother animation on low-end devices
+    size: isHighPerformance ? 0.4 : 0.6, // Larger particles are less resource-intensive
+  }), [getQuantity, isHighPerformance, currentTheme])
+  
+  // Don't render anything until we're ready to show particles
+  if (!isVisible) return null
   
   return (
-    <canvas 
-      ref={canvasRef}
-      className="fixed inset-0 -z-10 pointer-events-none"
-      style={{ 
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        zIndex: -10
-      }}
-      aria-hidden="true"
+    <Particles
+      className="fixed inset-0 -z-10 animate-fade-in"
+      refresh={false}
+      {...particleProps}
     />
   )
-} 
+}
+
+// Memoize the component to prevent unnecessary re-renders
+export const ParticlesBackground = memo(ParticlesBackgroundComponent) 
