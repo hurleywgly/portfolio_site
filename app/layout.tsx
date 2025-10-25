@@ -5,8 +5,13 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { ParticlesBackground } from "@/components/particles-background"
 
 export const metadata: Metadata = {
-  title: "Ryan Wigley",
-  description: "Personal website and portfolio of Ryan Wigley, Technical Product Leader based in Seattle.",
+  metadataBase: new URL('https://ryanwigley.com'),
+  title: "Ryan Wigley | Technologist and Product Leader",
+  description: "Personal website and portfolio of Ryan Wigley, Technologist and Product Leader, based in Seattle.",
+  openGraph: {
+    title: "Ryan Wigley | Technologist and Product Leader",
+    description: "Personal website and portfolio of Ryan Wigley, Technologist and Product Leader, based in Seattle.",
+  },
 }
 
 export default function RootLayout({

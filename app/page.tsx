@@ -16,8 +16,7 @@ export default function Home() {
       <main className="flex-1 container max-w-4xl mx-auto px-4 pb-16">
         <section className="mb-12">
           <p className="text-lg text-muted-foreground">
-            👋 Hey! I'm Ryan Wigley, a technical product leader based in Seattle, where I live with my wife and toddler.
-            I'm passionate about emerging technology and new ways of thinking, working, and living. When I'm not at my computer, I'm usually hanging with my dog, dancing, paddleboarding, or cooking with my friends and family.
+          I build systems to understand them. From shipping products at Amazon-scale to prototyping multi-agent operating systems in my home office, I'm drawn to the edges where strategy meets execution. Currently leading products at Raya and figuring out where AI solves actual problems versus where it's just hype.
           </p>
         </section>
 
@@ -26,9 +25,6 @@ export default function Home() {
             <Briefcase className="h-5 w-5" />
             <h2 className="text-xl font-semibold">Work</h2>
           </div>
-          <p className="text-muted-foreground mb-4">
-            I excel at building new software products, storytelling, obsessing over customers, and wearing many hats.
-          </p>
           <div className="space-y-4">
             {workExperience.map((work) => (
               <WorkItem key={work.company} experience={work} />
@@ -83,9 +79,9 @@ export default function Home() {
           <div className="mt-16 p-4 bg-muted/50 rounded-lg">
             <h2 className="font-semibold mb-2">About this site</h2>
             <p className="text-sm text-muted-foreground">
-              This site was built using code assists from Cursor, Claude, and 
-              ChatGPT and is currently hosted on Netlify. Prototypes were built 
-              using Replit, v0, Bolt, and more.
+              This site was built using code assists from Cursor, Claude Code,
+              and Claude. It is currently hosted on Netlify. Prototypes and apps
+              were built using Lovable, v0, Bolt, Replit, and more.
             </p>
           </div>
         </section>

@@ -57,6 +57,11 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
     notFound()
   }
 
+  let buttonText = "Visit Prototype";
+  if (project.id === "stumble-ai" || project.id === "bookshelf") {
+    buttonText = "Visit Website";
+  }
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -90,7 +95,7 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
             rel="noopener noreferrer"
             className="inline-block px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90"
           >
-            View Prototype
+            {buttonText}
           </a>
         </div>
 
