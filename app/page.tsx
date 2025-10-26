@@ -16,7 +16,7 @@ export default function Home() {
       <main className="flex-1 container max-w-4xl mx-auto px-4 pb-16">
         <section className="mb-12">
           <p className="text-lg text-muted-foreground">
-          I build systems to understand them. From shipping products at Amazon-scale to prototyping multi-agent operating systems in my home office, I'm drawn to the edges where strategy meets execution. Currently leading products at Raya and figuring out where AI solves actual problems versus where it's just hype.
+          I build systems to understand them. From shipping products at Amazon-scale to prototyping agentic systems in my home office, I'm drawn to the edges where strategy meets execution. Currently leading the membership experience at Raya, figuring out where AI solves actual problems versus where it's just hype.
           </p>
         </section>
 
