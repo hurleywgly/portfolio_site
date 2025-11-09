@@ -149,6 +149,13 @@ export const tools: Tool[] = [
 
 export const essays: Essay[] = [
     {
+        id: "6",
+        date: "11/9/25",
+        title: "Personal Engineering",
+        preview: "It's ironic how we obsessed over the interface while the real breakthrough was happening in the background.",
+        url: "https://blog.ryanwigley.com/personal-engineering",
+      },
+    {
         id: "1",
         date: "2/26/25",
         title: "Everyday AI Copilots",
