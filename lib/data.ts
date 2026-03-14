@@ -149,6 +149,13 @@ export const tools: Tool[] = [
 
 export const essays: Essay[] = [
     {
+        id: "8",
+        date: "3/14/26",
+        title: "Capsules Essay",
+        preview: "PM editorial compression is the missing protocol for agent-to-agent knowledge transfer. I built capsules and an evaluation harness to prove it.",
+        url: "https://blog.ryanwigley.com/capsules-a-framework-for-portable-knowledge-transfer-between-ai-agent",
+      },
+    {
         id: "6",
         date: "11/9/25",
         title: "Personal Engineering",
